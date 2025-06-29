@@ -10,7 +10,7 @@ import torchvision.transforms as T
 import os, torch
 from pathlib import Path
 
-#Choose GPU iv avaliable
+#Choose GPU iv available
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 IMG_SIZE = 224         # matches EfficientNet-B0 default
@@ -149,7 +149,7 @@ model.to(device)
 
 criterion  = nn.CrossEntropyLoss() # computes the cross entropy loss between input logits and target. It is useful when training a classification problem with C classes. 
 optimizer  = AdamW(model.parameters(), lr=0.0003, weight_decay=0.0001)
-scheduler  = CosineAnnealingLR(optimizer, T_max=EPOCHS) # Starts training with aggresive LR, then smoothly decays it to tiny steps
+scheduler  = CosineAnnealingLR(optimizer, T_max=EPOCHS) # Starts training with aggressive LR, then smoothly decays it to tiny steps
 metric_val = MulticlassAccuracy(num_classes=101).to(device) #Compute accuracy score, which is the frequency of input matching target. Its functional version is 
 
 
