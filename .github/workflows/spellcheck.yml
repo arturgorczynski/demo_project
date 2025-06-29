@@ -1,0 +1,14 @@
+# .github/workflows/spellcheck.yml
+name: Spell Check
+on: [push, pull_request]
+
+jobs:
+  codespell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run codespell
+        uses: codespell-project/actions-codespell@v2  # Marketplace action
+        with:
+          check_filenames: true
+          skip: ".git,*.svg"
